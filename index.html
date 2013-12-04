@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Web Application | todo</title>
+    <meta name="description"
+          content="app, web app, responsive, admin dashboard, admin, flat, flat ui, ui kit, off screen nav">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" href="css/app.v1.css">
+    <link rel="stylesheet" href="css/font.css" cache="false">
+    <!--[if lt IE 9]>
+    <script src="js/ie/respond.min.js" cache="false"></script>
+    <script src="js/ie/html5.js" cache="false"></script>
+    <script src="js/ie/fix.js" cache="false"></script> <![endif]-->
+    <script src="css/app.v1.js"></script>
+    <script src="https://platform.linkedin.com/in.js" type="text/javascript">
+        lang: en_US
+    </script>
+    <script id="itemTemplate" type="text/html">
+        <div class="checkbox"> 
+        <input type="checkbox" class="chk"/>
+        <a href=<%=event.url%> data-target=<%=event.id%>><%=event.title%></a>
+        </div>
+    </script>    
+    </head>
+<body>
+<section class="hbox stretch"> <!-- .aside -->
+    <aside class="bg-primary aside-sm" id="nav">
+        <section class="vbox">
+            <header class="dker nav-bar">
+                <a class="btn btn-link visible-xs" data-toggle="class:nav-off-screen" data-target="body"> <i
+                        class="icon-reorder"></i> </a>
+                <a href="#" class="nav-brand" data-toggle="fullscreen">refrew</a>
+                <a class="btn btn-link visible-xs" data-toggle="class:show" data-target=".nav-user"> <i
+                        class="icon-comment-alt"></i> </a>
+            </header>
+            <footer class="footer bg-gradient hidden-xs">
+                <a href="modal.lockme.html" data-toggle="ajaxModal"
+                   class="btn btn-sm btn-link m-r-n-xs pull-right"> <i
+                        class="icon-off"></i> </a> <a href="#nav" data-toggle="class:nav-vertical"
+                                                      class="btn btn-sm btn-link m-l-n-sm"> <i class="icon-reorder"></i>
+            </a>
+            </footer>
+            <section>
+                <div class="lt nav-user hidden-xs pos-rlt">
+                </div>
+
+                <nav class="nav-primary hidden-xs">
+                    <ul class="nav">
+                        <li class="active">
+                            <a href="index.html">
+                                <i class="icon-home"></i> <span>Home</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <i class="icon-group"></i><span>Recruit</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <i class="icon-gift"></i> <span>Rewards</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <i class="icon-tasks"></i> <span>Tasks</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <i class="icon-pencil"></i> <span>Notes</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <i class="icon-linkedin-sign"></i> <span>Login</span>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+            </section>
+        </section>
+    </aside>
+    <!-- /.aside --> <!-- .vbox -->
+    <section id="content">
+        <section class="vbox">
+            <header class="header bg-white b-b"><p>Refer. Recruit. Reward.</p></header>
+            <section class="scrollable wrapper">
+                <div class="row">
+                    <div class="col-lg-12" id="main-widget">
+                        <section class="panel clearfix">
+                            <div class="wizard wizard-vertical clearfix" id="wizard-2">
+                                <ul class="steps">
+                                    <li data-target="#step1" class="active"><span class="badge badge-info">1</span>Location & Skills</li>
+                                    <li data-target="#step2"><span class="badge">2</span>Job Description</li>
+                                    <li data-target="#step3"><span class="badge">3</span>Events</li>
+                                    <li data-target="#step4"><span class="badge">4</span>Save</li>
+                                </ul>
+                            </div>
+                            <div class="step-content">
+                                <div class="step-pane active" id="step1">
+                                    <form class="form-horizontal" method="get" data-validate="parsley">
+                                        <div class="form-group">
+                                            <label class="col-sm-3 control-label">Location</label>
+                                            <div class="col-sm-4"><input id='loc-input' type="text" name="username" placeholder="London"
+                                                           value="London"  data-required="false" class="form-control"></div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-sm-3 control-label">Key Skills</label>
+                                            <div class="col-sm-4"><input id='skills-input' type="text" name="skills" placeholder="Java, Social Media, Accounting"
+                                                             value="Java" data-required="false" class="form-control"></div>
+                                        </div>                                        
+                                    </form>
+                                </div>
+                                <div class="step-pane" id="step2"><p>Getting latest events....</p>
+                                    <div class="progress progress-xs m-t-sm">
+                                        <div class="progress-bar progress-bar-info" data-toggle="tooltip"
+                                             data-original-title="40%" style="width: 40%"></div>
+                                    </div>
+                                    <p class="text-muted">
+                                        <small>Meanwhile...</small>
+                                    </p>
+                                    <div class="form-group">
+                                        <label class="control-label">Write a short description of the job</label>
+                                        <div class="">
+                                            <textarea id="job-description" placeholder="Profile" rows="5" data-trigger="keyup"
+                                                                data-rangelength="[20,200]"
+                                                                class="form-control">Looking for a highly dynamic Java developer</textarea>
+                                        </div>
+                                    </div>
+                                </div>                                    
+                                <div class="step-pane" id="step3">
+                                    <section class="panel">
+                                        <header class="panel-heading"><span id="no-of-events" class="badge bg-info pull-right"></span>Select an Event as a Referral Reward</header>
+                                        <section class="panel-body">
+                                        <div id="event-list"></div>
+                                        </section>
+                                    </section>
+                                </div>
+                                <div class="step-pane" id="step4">
+                                    <form id="final-form">
+                                        <label class="control-label">Location</label><p id="selected-location"></p>
+                                        <input name="location" id="selected-location-ip" type="hidden"/>
+                                        
+                                        <label class="control-label">Skills</label><p id="selected-skills"></p>
+                                        <input name="skills" id="selected-skills-ip" type="hidden"/>
+                                        
+                                        <label class="control-label">Description</label><p id="selected-description"></p>
+                                        <input name="description" id="selected-description-ip" type="hidden"/>
+                                        
+                                        <label class="control-label">Reward Event</label><p><a href="#" id="selected-event" target="_blank"></a></p>
+                                        <input name="eventName" id="selected-event-ip" type="hidden"/>
+                                        <input name="eventUrl" id="selected-event-url" type="hidden"/>
+                                        <input name="eventId" id="selected-event-id" type="hidden"/>
+                                    </form>
+                                    <br/>
+                                    <div><a id="save" href="#" class="btn btn-sm btn-info">Save</a></div>
+                                    
+                                    <!--script type="IN/Share" data-url="http://niravshah.kd.io/todo/share5.html"></script-->
+                                </div>
+                                <div class="actions m-t text-right">
+                                    <button type="button" class="btn btn-white btn-sm btn-prev" data-target="#wizard-2"
+                                            data-wizard="previous" disabled="disabled">Prev
+                                    </button>
+                                    <button id="next-button" type="button" class="btn btn-white btn-sm btn-next" data-target="#wizard-2"
+                                            data-wizard="next" data-last="Finish">Next
+                                    </button>
+                                </div>
+                            </div>
+                        </section>                    
+                    </div>
+                </div>
+            </section>
+        </section>
+        <a href="#" class="hide nav-off-screen-block" data-toggle="class:nav-off-screen" data-target="body"></a>
+    </section>
+    <!-- /.vbox --> </section>
+
+<script src="http://www.parsecdn.com/js/parse-1.2.13.min.js"></script>
+<script src="js/apps/refrew.js"></script>
+<script type='text/javascript' src="http://evbdn.eventbrite.com/s3-s3/static/js/platform/Eventbrite.jquery.js"></script>
+<script src="http://marionettejs.com/downloads/backbone.marionette.min.js"></script>
+</body>
+</html>
